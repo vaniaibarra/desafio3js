@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Colores</title>
+</head>
+<body>
+
+    <div id="divOne" style="width:200px; height:200px; background-color:blue;"></div>
+    <div id="divTwo" style="width:200px; height:200px; background-color:red;"></div>
+    <div id="divThree" style="width:200px; height:200px; background-color:green;"></div>
+    <div id="divFour" style="width:200px; height:200px; background-color:yellow;"></div>
+
+    <div id="key" style="width:200px; height:200px; background-color:white; border: 2px solid black; margin-top: 20px;"></div>
+
+    <div id="container"></div>
+
+    <script>
+        function blackBg(element) {
+            element.style.backgroundColor = 'black';
+        }
+
+        document.getElementById("divOne").addEventListener("click", function() {
+            blackBg(this);
+        });
+        document.getElementById("divTwo").addEventListener("click", function() {
+            blackBg(this);
+        });
+        document.getElementById("divThree").addEventListener("click", function() {
+            blackBg(this);
+        });
+        document.getElementById("divFour").addEventListener("click", function() {
+            blackBg(this);
+        });
+
+        let pickedColor = '';
+
+        document.addEventListener('keydown', function(event) {
+            const keyDiv = document.getElementById('key');
+
+            if (event.key === 'a') {
+                colorGlobal = 'pink';  // Rosado
+                keyDiv.style.backgroundColor = colorGlobal;
+            } else if (event.key === 's') {
+                colorGlobal = 'orange';  // Naranjo
+                keyDiv.style.backgroundColor = colorGlobal;
+            } else if (event.key === 'd') {
+                colorGlobal = 'lightblue';  // Celeste
+                keyDiv.style.backgroundColor = colorGlobal;
+            }
+
+            if (event.key === 'q') {
+                createDiv('purple');  // Morado
+            } else if (event.key === 'w') {
+                createDiv('gray');    // Gris
+            } else if (event.key === 'e') {
+                createDiv('brown');   // Café
+            }
+        });
+
+        function createDiv(color) {
+            const newDiv = document.createElement('div');
+            newDiv.style.width = '200px';
+            newDiv.style.height = '200px';
+            newDiv.style.backgroundColor = color;
+            newDiv.style.border = '2px solid black';
+            newDiv.style.marginTop = '10px';
+
+            document.getElementById('container').appendChild(newDiv);
+        }
+    </script>
+</body>
+</html>
